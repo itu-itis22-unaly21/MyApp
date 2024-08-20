@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		2D50D0212C747EF300AEAC36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D0202C747EF300AEAC36 /* AppDelegate.swift */; };
 		2D50D0232C747EF300AEAC36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D0222C747EF300AEAC36 /* SceneDelegate.swift */; };
-		2D50D0252C747EF300AEAC36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D0242C747EF300AEAC36 /* ViewController.swift */; };
-		2D50D0282C747EF300AEAC36 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2D50D0272C747EF300AEAC36 /* Base */; };
 		2D50D02A2C747EF400AEAC36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D50D0292C747EF400AEAC36 /* Assets.xcassets */; };
 		2D50D02D2C747EF400AEAC36 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2D50D02C2C747EF400AEAC36 /* Base */; };
+		2D50D0352C74AB1900AEAC36 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D0342C74AB1900AEAC36 /* GameViewController.swift */; };
+		2D50D03C2C74AD3E00AEAC36 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D03B2C74AD3E00AEAC36 /* FavouriteViewController.swift */; };
+		2D50D03F2C74ADA700AEAC36 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D03E2C74ADA700AEAC36 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D50D01D2C747EF300AEAC36 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50D0202C747EF300AEAC36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D50D0222C747EF300AEAC36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2D50D0242C747EF300AEAC36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2D50D0272C747EF300AEAC36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D50D0292C747EF400AEAC36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D50D02C2C747EF400AEAC36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D50D02E2C747EF400AEAC36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D50D0342C74AB1900AEAC36 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		2D50D03B2C74AD3E00AEAC36 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		2D50D03E2C74ADA700AEAC36 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,64 @@
 		2D50D01F2C747EF300AEAC36 /* MyApp */ = {
 			isa = PBXGroup;
 			children = (
-				2D50D0202C747EF300AEAC36 /* AppDelegate.swift */,
-				2D50D0222C747EF300AEAC36 /* SceneDelegate.swift */,
-				2D50D0242C747EF300AEAC36 /* ViewController.swift */,
-				2D50D0262C747EF300AEAC36 /* Main.storyboard */,
-				2D50D0292C747EF400AEAC36 /* Assets.xcassets */,
+				2D50D0382C74ABAC00AEAC36 /* Support */,
+				2D50D0372C74AB8800AEAC36 /* Network */,
+				2D50D0362C74AB7900AEAC36 /* Scenes */,
 				2D50D02B2C747EF400AEAC36 /* LaunchScreen.storyboard */,
 				2D50D02E2C747EF400AEAC36 /* Info.plist */,
 			);
 			path = MyApp;
+			sourceTree = "<group>";
+		};
+		2D50D0362C74AB7900AEAC36 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2D50D03D2C74AD9200AEAC36 /* TabBar */,
+				2D50D03A2C74AC3700AEAC36 /* Favourites */,
+				2D50D0392C74ABCF00AEAC36 /* Game */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2D50D0372C74AB8800AEAC36 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2D50D0382C74ABAC00AEAC36 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				2D50D0202C747EF300AEAC36 /* AppDelegate.swift */,
+				2D50D0222C747EF300AEAC36 /* SceneDelegate.swift */,
+				2D50D0292C747EF400AEAC36 /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		2D50D0392C74ABCF00AEAC36 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				2D50D0342C74AB1900AEAC36 /* GameViewController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		2D50D03A2C74AC3700AEAC36 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				2D50D03B2C74AD3E00AEAC36 /* FavouriteViewController.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		2D50D03D2C74AD9200AEAC36 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2D50D03E2C74ADA700AEAC36 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +178,6 @@
 			files = (
 				2D50D02A2C747EF400AEAC36 /* Assets.xcassets in Resources */,
 				2D50D02D2C747EF400AEAC36 /* Base in Resources */,
-				2D50D0282C747EF300AEAC36 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D50D0252C747EF300AEAC36 /* ViewController.swift in Sources */,
 				2D50D0212C747EF300AEAC36 /* AppDelegate.swift in Sources */,
 				2D50D0232C747EF300AEAC36 /* SceneDelegate.swift in Sources */,
+				2D50D0352C74AB1900AEAC36 /* GameViewController.swift in Sources */,
+				2D50D03F2C74ADA700AEAC36 /* TabBarViewController.swift in Sources */,
+				2D50D03C2C74AD3E00AEAC36 /* FavouriteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2D50D0262C747EF300AEAC36 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D50D0272C747EF300AEAC36 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2D50D02B2C747EF400AEAC36 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,7 +340,6 @@
 				INFOPLIST_FILE = MyApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -323,7 +366,6 @@
 				INFOPLIST_FILE = MyApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
