@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SnapKit
 final class GameViewController: UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ final class GameViewController: UIViewController, UISearchBarDelegate {
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 7),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -7),
-            searchBar.heightAnchor.constraint(equalToConstant: 60)
+            searchBar.heightAnchor.constraint(equalToConstant: 60) //snapkitle yaz
         ])
     }
 }
