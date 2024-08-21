@@ -14,6 +14,7 @@
 		2D50D0352C74AB1900AEAC36 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D0342C74AB1900AEAC36 /* GameViewController.swift */; };
 		2D50D03C2C74AD3E00AEAC36 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D03B2C74AD3E00AEAC36 /* FavouriteViewController.swift */; };
 		2D50D03F2C74ADA700AEAC36 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50D03E2C74ADA700AEAC36 /* TabBarViewController.swift */; };
+		2DAAE33F2C75D793009B5E01 /* GameUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE33E2C75D793009B5E01 /* GameUITableViewCell.swift */; };
 		ACA4237BCDFCC74B42729FAF /* Pods_MyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76B5B77ED729EB0841D5625 /* Pods_MyApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		2D50D0342C74AB1900AEAC36 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2D50D03B2C74AD3E00AEAC36 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 		2D50D03E2C74ADA700AEAC36 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		2DAAE33E2C75D793009B5E01 /* GameUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUITableViewCell.swift; sourceTree = "<group>"; };
 		525A33DDE94C273297840F0B /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
 		A76B5B77ED729EB0841D5625 /* Pods_MyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF64CDBCB3F30B6A3E490EA /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				2D50D0342C74AB1900AEAC36 /* GameViewController.swift */,
+				2DAAE33E2C75D793009B5E01 /* GameUITableViewCell.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -131,7 +134,6 @@
 				EFF64CDBCB3F30B6A3E490EA /* Pods-MyApp.debug.xcconfig */,
 				525A33DDE94C273297840F0B /* Pods-MyApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D50D0212C747EF300AEAC36 /* AppDelegate.swift in Sources */,
+				2DAAE33F2C75D793009B5E01 /* GameUITableViewCell.swift in Sources */,
 				2D50D0232C747EF300AEAC36 /* SceneDelegate.swift in Sources */,
 				2D50D0352C74AB1900AEAC36 /* GameViewController.swift in Sources */,
 				2D50D03F2C74ADA700AEAC36 /* TabBarViewController.swift in Sources */,
@@ -406,6 +409,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -433,6 +437,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

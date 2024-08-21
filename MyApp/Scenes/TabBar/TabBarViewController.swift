@@ -12,12 +12,10 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Wrap GameViewController in a UINavigationController
         let gameViewController = GameViewController()
         let gameNavController = UINavigationController(rootViewController: gameViewController)
         gameNavController.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller"), tag: 0)
         
-        // Wrap FavouriteViewController in a UINavigationController
         let favouriteViewController = FavouriteViewController()
         let favouriteNavController = UINavigationController(rootViewController: favouriteViewController)
         favouriteNavController.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(systemName: "star"), tag: 1)
