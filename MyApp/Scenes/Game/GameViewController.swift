@@ -65,4 +65,13 @@ extension GameViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         136
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedImage = gameModel[indexPath.row]
+        let selectedTitle = "Grand Theft Auto V"
+        
+        let detailVC = GameDetailViewController()
+        detailVC.configure(with: selectedImage, title: selectedTitle)
+        navigationController?.pushViewController(detailVC, animated: true)
+        }
 }
+
