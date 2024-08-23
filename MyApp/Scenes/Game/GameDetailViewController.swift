@@ -1,8 +1,9 @@
-import UIKit
 import SnapKit
+import UIKit
 
 final class GameDetailViewController: UIViewController {
     
+    var gameId: Int? // Oyun ID'si
     private let gameImageView = UIImageView()
     private let gameTitleLabel = UILabel()
     private let gameDescriptionHeaderLabel = UILabel()
@@ -17,8 +18,13 @@ final class GameDetailViewController: UIViewController {
         setupSubviews()
         setupConstraints()
         applyGradientToImageView()
-        configure(with: UIImage(named: "gta5"/*game_image*/), title: "Grand Theft Auto V")
-        configureDescriptionAndLinks(description: "Rockstar Games went bigger, since their previous installment of the series. You get the complicated and realistic world-building from Liberty City of GTA4 in the setting of lively and diverse Los Santos, from an old fan favorite GTA San Andreas. 561 different vehicles (including every transport you can operate)…", redditLink: "Visit reddit", websiteLink: "Visit website")
+        
+        // Oyun detaylarını çek
+        if let gameId = gameId {
+            fetchGameDetails(gameId: gameId)
+        } else {
+            print("Game ID yok")
+        }
     }
     
     private func setupSubviews() {
@@ -95,6 +101,7 @@ final class GameDetailViewController: UIViewController {
             make.height.equalTo(22)
         }
     }
+    
     private func applyGradientToImageView() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = gameImageView.bounds
@@ -122,5 +129,18 @@ final class GameDetailViewController: UIViewController {
         gameDescriptionLabel.text = description
         visitRedditButton.setTitle(redditLink, for: .normal)
         visitWebsiteButton.setTitle(websiteLink, for: .normal)
+    }
+    
+    private func fetchGameDetails(gameId: Int) {
+        NetworkManager.shared.fetchGameDetails(gameId: gameId) { [weak self] result in
+            switch result {
+            case .success(let gameDetail):
+                DispatchQueue.main.async {
+                    self?.configureDescriptionAndLinks(description: gameDetail.description, redditLink: gameDetail.redditURL ?? "No Reddit Link", websiteLink: gameDetail.website ?? "No Website")
+                }
+            case .failure(let error):
+                print("Error fetching game details: \(error.localizedDescription)")
+            }
+        }
     }
 }

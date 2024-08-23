@@ -1,5 +1,5 @@
-import UIKit
 import SnapKit
+import UIKit
 
 class GameUITableViewCell: UITableViewCell {
     static let identifier = "GameUITableViewCell"

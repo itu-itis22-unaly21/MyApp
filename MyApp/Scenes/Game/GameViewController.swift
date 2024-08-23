@@ -2,8 +2,8 @@ import UIKit
 import SnapKit
 
 final class GameViewController: UIViewController, UISearchBarDelegate {
-    
-    let gameModel: [UIImage] = [UIImage(named: "gta5")!]
+
+    var games: [Game] = [] // API'den gelen oyun verilerini tutacak dizi
     
     let tableView: UITableView = {
         let tableView: UITableView = UITableView()
@@ -25,6 +25,7 @@ final class GameViewController: UIViewController, UISearchBarDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
+        getGames()
         view.backgroundColor = .systemBackground
         title = "Games"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -33,6 +34,22 @@ final class GameViewController: UIViewController, UISearchBarDelegate {
         view.addSubview(tableView)
         
         configureConstraints()
+    }
+    
+    private func getGames() {
+        let urlString = "https://api.rawg.io/api/games?page_size=5&page=1"
+        
+        NetworkManager.shared.fetchGames(urlString: urlString) { [weak self] result in
+            switch result {
+            case .success(let games):
+                DispatchQueue.main.async {
+                    self?.games = games // Gelen oyunları `games` dizisine atıyoruz
+                    self?.tableView.reloadData() // Tabloyu yeniliyoruz
+                }
+            case .failure(let error):
+                print("Error fetching games: \(error.localizedDescription)")
+            }
+        }
     }
     
     private func configureConstraints() {
@@ -50,28 +67,58 @@ final class GameViewController: UIViewController, UISearchBarDelegate {
     }
 }
 
+
 extension GameViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        gameModel.count
+        return games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = gameModel[indexPath.row]
+        let game = games[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: GameUITableViewCell.identifier, for: indexPath) as! GameUITableViewCell
-        cell.configure(image: data, titleText: "Grand Theft Auto V", metaCriticText: "96", categoriesText: "Action, shooter")
+        
+        // Resim verisini asenkron olarak indirip cell'e yerleştirme
+        if let imageUrl = URL(string: game.backgroundImage) {
+            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                if let data = data, error == nil {
+                    DispatchQueue.main.async {
+                        cell.configure(image: UIImage(data: data), titleText: game.name, metaCriticText: "\(game.metacritic ?? 0)", categoriesText: game.genres.map { $0.name }.joined(separator: ", "))
+                    }
+                }
+            }.resume()
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        136
+        return 136
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedImage = gameModel[indexPath.row]
-        let selectedTitle = "Grand Theft Auto V"
+        let selectedGame = games[indexPath.row]
         
         let detailVC = GameDetailViewController()
-        detailVC.configure(with: selectedImage, title: selectedTitle)
-        navigationController?.pushViewController(detailVC, animated: true)
+        detailVC.gameId = selectedGame.id  // Seçilen oyunun ID'sini detailVC'ye geçiriyoruz.
+        
+        // Resim verisini asenkron olarak indirip detailVC'ye geçiriyoruz
+        if let imageUrl = URL(string: selectedGame.backgroundImage) {
+            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                if let data = data, error == nil {
+                    DispatchQueue.main.async {
+                        let image = UIImage(data: data)
+                        detailVC.configure(with: image, title: selectedGame.name)
+                        self.navigationController?.pushViewController(detailVC, animated: true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        detailVC.configure(with: nil, title: selectedGame.name)
+                        self.navigationController?.pushViewController(detailVC, animated: true)
+                    }
+                }
+            }.resume()
+        } else {
+            detailVC.configure(with: nil, title: selectedGame.name)
+            navigationController?.pushViewController(detailVC, animated: true)
         }
+    }
 }
-
