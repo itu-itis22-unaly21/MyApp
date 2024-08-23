@@ -8,8 +8,11 @@ final class GameDetailViewController: UIViewController {
     private let gameTitleLabel = UILabel()
     private let gameDescriptionHeaderLabel = UILabel()
     private let gameDescriptionLabel = UILabel()
-    private let visitRedditButton = UIButton()
-    private let visitWebsiteButton = UIButton()
+    private let redditLinkLabel = UILabel()
+    private let websiteLinkLabel = UILabel()
+
+    private var redditURL: String?
+    private var websiteURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +50,23 @@ final class GameDetailViewController: UIViewController {
         gameDescriptionLabel.textColor = .black
         view.addSubview(gameDescriptionLabel)
         
-        visitRedditButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        visitRedditButton.setTitleColor(.black, for: .normal)
-        visitRedditButton.contentHorizontalAlignment = .left
-        view.addSubview(visitRedditButton)
+        redditLinkLabel.font = UIFont.systemFont(ofSize: 17)
+        redditLinkLabel.textColor = .black
+        redditLinkLabel.text = "Visit Reddit"
+        redditLinkLabel.isUserInteractionEnabled = true
+        view.addSubview(redditLinkLabel)
+
+        websiteLinkLabel.font = UIFont.systemFont(ofSize: 17)
+        websiteLinkLabel.textColor = .black
+        websiteLinkLabel.text = "Visit Website"
+        websiteLinkLabel.isUserInteractionEnabled = true
+        view.addSubview(websiteLinkLabel)
         
-        visitWebsiteButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        visitWebsiteButton.setTitleColor(.black, for: .normal)
-        visitWebsiteButton.contentHorizontalAlignment = .left
-        view.addSubview(visitWebsiteButton)
+        let redditTapGesture = UITapGestureRecognizer(target: self, action: #selector(openRedditLink))
+        redditLinkLabel.addGestureRecognizer(redditTapGesture)
+        
+        let websiteTapGesture = UITapGestureRecognizer(target: self, action: #selector(openWebsiteLink))
+        websiteLinkLabel.addGestureRecognizer(websiteTapGesture)
     }
     
     private func setupConstraints() {
@@ -87,14 +98,14 @@ final class GameDetailViewController: UIViewController {
             make.height.equalTo(81)
         }
         
-        visitRedditButton.snp.makeConstraints { make in
+        redditLinkLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(537)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(343)
             make.height.equalTo(22)
         }
-        
-        visitWebsiteButton.snp.makeConstraints { make in
+
+        websiteLinkLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(592)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(343)
@@ -127,8 +138,8 @@ final class GameDetailViewController: UIViewController {
     
     func configureDescriptionAndLinks(description: String, redditLink: String, websiteLink: String) {
         gameDescriptionLabel.text = description
-        visitRedditButton.setTitle(redditLink, for: .normal)
-        visitWebsiteButton.setTitle(websiteLink, for: .normal)
+        redditURL = redditLink
+        websiteURL = websiteLink
     }
     
     private func fetchGameDetails(gameId: Int) {
@@ -141,6 +152,22 @@ final class GameDetailViewController: UIViewController {
             case .failure(let error):
                 print("Error fetching game details: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    @objc private func openRedditLink() {
+        if let urlString = redditURL, let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        } else {
+            print("Invalid Reddit URL")
+        }
+    }
+    
+    @objc private func openWebsiteLink() {
+        if let urlString = websiteURL, let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        } else {
+            print("Invalid Website URL")
         }
     }
 }

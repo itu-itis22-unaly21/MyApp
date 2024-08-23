@@ -3,7 +3,7 @@ import SnapKit
 
 final class GameViewController: UIViewController, UISearchBarDelegate {
 
-    var games: [Game] = [] // API'den gelen oyun verilerini tutacak dizi
+    var games: [Game] = [] // Array to hold game data fetched from the API
     
     let tableView: UITableView = {
         let tableView: UITableView = UITableView()
@@ -43,8 +43,8 @@ final class GameViewController: UIViewController, UISearchBarDelegate {
             switch result {
             case .success(let games):
                 DispatchQueue.main.async {
-                    self?.games = games // Gelen oyunları `games` dizisine atıyoruz
-                    self?.tableView.reloadData() // Tabloyu yeniliyoruz
+                    self?.games = games // Assigning fetched games to the "games" array
+                    self?.tableView.reloadData() //Reloading table
                 }
             case .failure(let error):
                 print("Error fetching games: \(error.localizedDescription)")
@@ -77,7 +77,7 @@ extension GameViewController: UITableViewDelegate, UITableViewDataSource {
         let game = games[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: GameUITableViewCell.identifier, for: indexPath) as! GameUITableViewCell
         
-        // Resim verisini asenkron olarak indirip cell'e yerleştirme
+        // Downloading image data asynchronously and set it in the cell
         if let imageUrl = URL(string: game.backgroundImage) {
             URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                 if let data = data, error == nil {
@@ -98,9 +98,9 @@ extension GameViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedGame = games[indexPath.row]
         
         let detailVC = GameDetailViewController()
-        detailVC.gameId = selectedGame.id  // Seçilen oyunun ID'sini detailVC'ye geçiriyoruz.
+        detailVC.gameId = selectedGame.id  // Passing the selected game's ID to detailVC.
         
-        // Resim verisini asenkron olarak indirip detailVC'ye geçiriyoruz
+        // Downloading the image data asynchronously and passing it to detailVC.
         if let imageUrl = URL(string: selectedGame.backgroundImage) {
             URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                 if let data = data, error == nil {

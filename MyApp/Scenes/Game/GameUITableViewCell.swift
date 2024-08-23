@@ -13,7 +13,7 @@ class GameUITableViewCell: UITableViewCell {
     let title: UILabel = {
         let label: UILabel = UILabel()
         label.font = UIFont(name: "Roboto" , size: 20)
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 20)//I added this since I couldn't add the Roboto font and the situation is also same in the others.
         label.textColor = .black
         return label
     }()
