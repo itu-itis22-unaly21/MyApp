@@ -8,3 +8,6 @@
 7- API for cells are set correctly (We can see the cells with datas on the Games page)
 8- API for detail screen is set (We can see the image and title in the detail screen)
 9- "Visit reddit" and "Visit website" parts are set so links are hidden now and we can go to reddit and websites through pressing the "Visit reddit" and "Visit website"
+
+To-Do
+Favorites Functionality: Implement the functionality to add and manage favorite games.
